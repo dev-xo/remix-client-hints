@@ -1,0 +1,82 @@
+/*
+* TailwindCSS.
+* Docs: https://tailwindcss.com/docs/guides/remix
+*/
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --text-primary: #000;
+  --background-primary: #fff;
+  --blob-gradient: linear-gradient(to right, #87cefa, #00ff7f, #ffa07a);
+}
+
+:root.dark {
+  --text-primary: #fff;
+  --background-primary: #000;
+  --blob-gradient: linear-gradient(to right, #4b0082, #8a2be2, #dda0dd);
+}
+
+/*
+* Placeholder CSS.
+*/
+body {
+  height: 100vh;
+  width: 100%;
+
+  color: var(--text-primary);
+  font-size: 14px;
+  font-weight: 400;
+  font-family:
+    system-ui,
+    -apple-system,
+    BlinkMacSystemFont,
+    'Segoe UI',
+    Roboto,
+    Oxygen,
+    Ubuntu,
+    Cantarell,
+    'Open Sans',
+    'Helvetica Neue',
+    sans-serif;
+  background-color: var(--background-primary);
+  transition: background-color 0.5s ease;
+  scroll-behavior: smooth;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/*
+* Custom Background.
+*/
+.blobs {
+  opacity: 0.25;
+  position: fixed;
+  top: 80%;
+  left: 50%;
+  transform: translate(-50%, -0%);
+  max-height: 60%;
+  max-width: 60%;
+  width: 100%;
+  height: 100%;
+  background: var(--blob-gradient);
+  filter: blur(100px) saturate(150%);
+  z-index: -1;
+}
+
+@layer utilities {
+  .actionable {
+    cursor: pointer;
+    @apply transition-all duration-200 active:scale-90;
+
+    &:hover {
+      opacity: 0.6;
+    }
+  }
+
+  .scalable {
+    cursor: pointer;
+    @apply transition-all duration-200 hover:scale-110 active:scale-90;
+  }
+}
